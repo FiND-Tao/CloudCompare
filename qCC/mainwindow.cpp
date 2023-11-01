@@ -9011,6 +9011,12 @@ void MainWindow::doActionExportCloudInfo()
 	csvStream << "meanX;";
 	csvStream << "meanY;";
 	csvStream << "meanZ;";
+	csvStream << "minX;";
+	csvStream << "minY;";
+	csvStream << "minZ;";
+	csvStream << "maxX;";
+	csvStream << "maxY;";
+	csvStream << "maxZ;";
 	{
 		for (unsigned i = 0; i < maxSFCount; ++i)
 		{
@@ -9036,6 +9042,12 @@ void MainWindow::doActionExportCloudInfo()
 			csvStream << G.x << ';' /*"meanX;"*/;
 			csvStream << G.y << ';' /*"meanY;"*/;
 			csvStream << G.z << ';' /*"meanZ;"*/;
+			csvStream << cloud->getBB_recursive().minCorner().x << ";";
+			csvStream << cloud->getBB_recursive().minCorner().y << ";";
+			csvStream << cloud->getBB_recursive().minCorner().z << ";";
+			csvStream << cloud->getBB_recursive().maxCorner().x << ";";
+			csvStream << cloud->getBB_recursive().maxCorner().y << ";";
+			csvStream << cloud->getBB_recursive().maxCorner().z << ";";
 			for (unsigned j = 0; j < cloud->getNumberOfScalarFields(); ++j)
 			{
 				CCCoreLib::ScalarField* sf = cloud->getScalarField(j);
